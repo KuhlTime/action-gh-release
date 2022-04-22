@@ -40,7 +40,9 @@ export const releaseBody = (config: Config): string | undefined => {
 type Env = { [key: string]: string | undefined };
 
 export const parseInputFiles = (files: string): string[] => {
-  return files.split(/\r?\n/).reduce<string[]>(
+  // CHANGE: Instead of splitting the files by newline
+  //         I am splitting each file by the space character
+  return files.split(' ').reduce<string[]>(
     (acc, line) =>
       acc
         .concat(line.split(","))
